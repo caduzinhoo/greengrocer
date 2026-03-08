@@ -19,6 +19,7 @@ class SignInScreen extends StatelessWidget {
                 color: Colors.white,
                 borderRadius: BorderRadius.vertical(top: Radius.circular(45)),
               ),
+
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
@@ -27,6 +28,8 @@ class SignInScreen extends StatelessWidget {
 
                   // senha
                   CustomTextFiel(icon: Icons.lock, label: 'Senha', isScret: true),
+
+                  // botão de entra 
 
                   SizedBox(
                     height: 50,
@@ -42,14 +45,51 @@ class SignInScreen extends StatelessWidget {
                     ),
                   ),
 
+                  // Esqueceu a senha 
                   Align(
                     alignment: Alignment.centerRight,
                     child: TextButton(onPressed: (){}, child: const Text('Esqueceu a senha?', style: TextStyle(color: Colors.red,
                     ),),
                     ),
                   ),
+                  
+                  // Divisor
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 10),
+                    child: Row(
+                      children: [
+                        Expanded(
+                          child: Divider(
+                            color: Colors.grey.withAlpha(90),
+                            thickness: 2,
+                          ),
+                        ),
+                        const Padding(
+                         padding:  EdgeInsets.symmetric(horizontal: 15),
+                         child:  Text('ou'),
+                       ),
+                       Expanded(
+                          child: Divider(
+                            color: Colors.grey.withAlpha(90),
+                            thickness: 2,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
 
-
+                  // botão de novo usuário
+                  SizedBox(
+                    height: 50,
+                    child: OutlinedButton(
+                      style: OutlinedButton.styleFrom(
+                        side: const BorderSide(
+                          width: 2,
+                          color: Colors.green,
+                        ),
+                      ),
+                      onPressed: () {}, child: const Text('Criar conta'),),
+                  ),
                 ],
               ),
             ),
