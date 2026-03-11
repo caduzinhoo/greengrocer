@@ -20,7 +20,7 @@ class CustomTextFiel extends StatefulWidget {
 
 class _CustomTextFielState extends State<CustomTextFiel> {
 
-bool isObscure = false;
+bool isObscure = true;
 
   @override
   Widget build(BuildContext context) {

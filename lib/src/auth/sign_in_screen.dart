@@ -2,6 +2,7 @@ import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:greengrocer/src/auth/components/custom_text_fiel.dart';
 import 'package:greengrocer/src/auth/sing_up_screen.dart';
+import 'package:greengrocer/src/base/base_screen.dart';
 import 'package:greengrocer/src/config/custom-colors.dart';
 
 class SignInScreen extends StatelessWidget {
@@ -102,7 +103,15 @@ class SignInScreen extends StatelessWidget {
                           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(18),
                           ),
                         ),
-                        onPressed: () {}, child: const Text('Entrar', style: TextStyle(
+                        onPressed: () {
+                          Navigator.of(context).pushReplacement(
+                            MaterialPageRoute(builder: (c) {
+                              return const BaseScreen();
+                            },),
+                          );
+
+
+                        }, child: const Text('Entrar', style: TextStyle(
                           fontSize: 18,
                         ),
                        ),
