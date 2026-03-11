@@ -1,11 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class CustomTextFiel extends StatefulWidget {
   final IconData icon;
   final String label;
   final bool isScret;
+  final List<TextInputFormatter>? inputFormatters;
 
- const CustomTextFiel({super.key, required this.icon, required this.label, this.isScret = false});
+ const CustomTextFiel({super.key,
+  required this.icon,
+  required this.label, 
+  this.isScret = false,
+  this.inputFormatters,
+   });
 
   @override
   State<CustomTextFiel> createState() => _CustomTextFielState();
@@ -20,6 +27,7 @@ bool isObscure = false;
     return Padding(
       padding: const EdgeInsets.only(bottom: 15),
       child: TextFormField(
+        inputFormatters:widget.inputFormatters,
         obscureText: isObscure,
         decoration: InputDecoration(
           prefixIcon: Icon(widget.icon),
@@ -34,7 +42,7 @@ bool isObscure = false;
                 )
               : null,
           labelText: widget.label,
-          isDense: true,
+          isDense:false,
           border: OutlineInputBorder(borderRadius: BorderRadius.circular(18)),
         ),
       ),
