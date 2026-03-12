@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:greengrocer/src/config/custom-colors.dart';
-import 'package:greengrocer/src/home/components/category_tile.dart';
+import 'package:greengrocer/src/pages/home/components/category_tile.dart';
+import 'package:greengrocer/src/config/app_data.dart' as appData ;
+
 
 class HomeTab extends StatefulWidget {
   const HomeTab({super.key});
@@ -10,9 +12,7 @@ class HomeTab extends StatefulWidget {
 }
 
 class _HomeTabState extends State<HomeTab> {
-  List<String> categories = ['Frutas', 'Grãos', 'Verduras', 'Temperos', 'Cereais',
-  ];
-
+  
   String  selectedCategory = 'Frutas';
 
   @override
@@ -92,18 +92,37 @@ class _HomeTabState extends State<HomeTab> {
                 return CategoryTile(
                   onPressed: () {
                     setState(() {
-                      selectedCategory = categories[index];
+                      selectedCategory = appData.categories[index];
                     });
                   },
-                  category: categories[index], 
-                  isSelected: categories[index] == selectedCategory,
+                  category: appData.categories[index], 
+                  isSelected: appData.categories[index] == selectedCategory,
               );
               },
               separatorBuilder: (context, index) => SizedBox(width: 10),
-              itemCount: categories.length,
+              itemCount: appData.categories.length,
             ),
           ),
+ 
           // Grid
+         Expanded(
+           child: GridView.builder(
+            gridDelegate:  const SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount:  2,
+              mainAxisSpacing: 10,
+              crossAxisSpacing: 10,
+           
+              ),
+           
+            itemCount: appData.items.length,
+            itemBuilder: (_, index){
+              return Container(
+                color: Colors.red,
+              );
+            },
+            ),
+         ),
+
         ],
       ),
     );

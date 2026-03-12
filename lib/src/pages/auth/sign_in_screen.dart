@@ -1,8 +1,8 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
-import 'package:greengrocer/src/auth/components/custom_text_fiel.dart';
-import 'package:greengrocer/src/auth/sing_up_screen.dart';
-import 'package:greengrocer/src/base/base_screen.dart';
+import 'package:greengrocer/src/pages/auth/components/custom_text_fiel.dart';
+import 'package:greengrocer/src/pages/auth/sing_up_screen.dart';
+import 'package:greengrocer/src/pages/base/base_screen.dart';
 import 'package:greengrocer/src/config/custom-colors.dart';
 
 class SignInScreen extends StatelessWidget {
