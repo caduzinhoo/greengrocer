@@ -5,7 +5,7 @@ ItemModel apple = ItemModel(
   imgUrl: 'assets/fruits/apple.png',
   unit: 'kg',
   price: 5.99,
-  description: 'Fresh red apples'
+  description: 'A maçã comercializada é uma variedade de maçã que atende a padrões específicos de qualidade e segurança. As maçãs são classificadas em diferentes categorias de acordo com o peso, tamanho e a presença de defeitos. As variedades mais consumidas no Brasil incluem Fuji, Gala, Red, Verde, Melrose e Brasil. Essas maçãs são conhecidas por sua doçura, crocância e longa vida útil após a colheita.'
 );
 
 ItemModel goiaba = ItemModel(
