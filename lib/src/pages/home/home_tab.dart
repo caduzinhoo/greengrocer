@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:greengrocer/src/config/custom-colors.dart';
+import 'package:greengrocer/src/pages/auth/sign_in_screen.dart';
 import 'package:greengrocer/src/pages/home/components/category_tile.dart';
-import 'package:greengrocer/src/config/app_data.dart' as appData ;
+import 'package:greengrocer/src/config/app_data.dart' as appData;
 import 'package:greengrocer/src/pages/home/components/item_tile.dart';
-
 
 class HomeTab extends StatefulWidget {
   const HomeTab({super.key});
@@ -13,14 +13,23 @@ class HomeTab extends StatefulWidget {
 }
 
 class _HomeTabState extends State<HomeTab> {
-  
-  String  selectedCategory = 'Frutas';
+  String selectedCategory = 'Frutas';
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       // app Bar
       appBar: AppBar(
+        leading: IconButton(
+          onPressed: () {
+           Navigator.of(context).pushReplacement(
+                            MaterialPageRoute(builder: (c) {
+                              return const SignInScreen();
+                            },),
+                          );},
+          icon: Icon(Icons.arrow_back),
+        ),
+
         backgroundColor: Colors.transparent,
         elevation: 0,
         centerTitle: true,
@@ -81,7 +90,6 @@ class _HomeTabState extends State<HomeTab> {
             ),
           ),
 
-
           // Categorias
           Container(
             padding: const EdgeInsets.only(left: 20),
@@ -96,35 +104,28 @@ class _HomeTabState extends State<HomeTab> {
                       selectedCategory = appData.categories[index];
                     });
                   },
-                  category: appData.categories[index], 
+                  category: appData.categories[index],
                   isSelected: appData.categories[index] == selectedCategory,
-              );
+                );
               },
               separatorBuilder: (context, index) => SizedBox(width: 10),
               itemCount: appData.categories.length,
             ),
           ),
- 
+
           // Grid
-         Expanded(
-           child: GridView.builder(
-            padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
-            physics: const BouncingScrollPhysics(),
-            gridDelegate:  const SliverGridDelegateWithFixedCrossAxisCount( 
-              crossAxisCount:  2,
-              mainAxisSpacing: 10,
-              crossAxisSpacing: 10,
-              childAspectRatio: 9/11.5,
-              ),
-           
-            itemCount: appData.items.length,
-            itemBuilder: (_, index){
-               return ItemTile(
-                item: appData.items[index],
-               );
-             },
+          Expanded(
+            child: GridView.builder(
+              padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
+              physics: const BouncingScrollPhysics(),
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2, mainAxisSpacing: 10, crossAxisSpacing: 10, childAspectRatio: 9 / 11.5),
+
+              itemCount: appData.items.length,
+              itemBuilder: (_, index) {
+                return ItemTile(item: appData.items[index]);
+              },
+            ),
           ),
-         ), 
         ],
       ),
     );

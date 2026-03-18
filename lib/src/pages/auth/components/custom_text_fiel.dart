@@ -28,7 +28,7 @@ bool isObscure = true;
       padding: const EdgeInsets.only(bottom: 15),
       child: TextFormField(
         inputFormatters:widget.inputFormatters,
-        obscureText: isObscure,
+        obscureText: isObscure == true && widget.isScret == true,
         decoration: InputDecoration(
           prefixIcon: Icon(widget.icon),
           suffixIcon: widget.isScret
