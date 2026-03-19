@@ -21,12 +21,13 @@ class _HomeTabState extends State<HomeTab> {
       // app Bar
       appBar: AppBar(
         leading: IconButton(
+          color: Colors.black,
           onPressed: () {
            Navigator.of(context).pushReplacement(
-                            MaterialPageRoute(builder: (c) {
-                              return const SignInScreen();
-                            },),
-                          );},
+             MaterialPageRoute(builder: (c) {
+               return const SignInScreen();
+             },),
+             );},
           icon: Icon(Icons.arrow_back),
         ),
 
