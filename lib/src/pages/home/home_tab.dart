@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:greengrocer/src/config/custom-colors.dart';
 import 'package:greengrocer/src/pages/auth/sign_in_screen.dart';
 import 'package:greengrocer/src/pages/home/components/category_tile.dart';
+// ignore: library_prefixes
 import 'package:greengrocer/src/config/app_data.dart' as appData;
 import 'package:greengrocer/src/pages/home/components/item_tile.dart';
 

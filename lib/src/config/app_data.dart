@@ -37,7 +37,7 @@ ItemModel mamao = ItemModel(
 ItemModel manga = ItemModel(
   itemName: 'Manga',
   imgUrl: 'assets/fruits/manga.png',
-  unit: 'kg',
+  unit: 'un',
   price: 8.99,
   description: 'Fresh red manga',
 );
@@ -70,15 +70,15 @@ List<String> categories = [
 List<CartItemModel> cartItems = [
   CartItemModel(
     item: apple, 
-    quantity: 2,
+    quantity: 1,
     ),
   CartItemModel(
     item: manga, 
-    quantity: 3,
+    quantity: 1,
     ),
   CartItemModel(
     item: uva, 
-    quantity: 4,  
+    quantity: 3,  
     ),          
 
 
