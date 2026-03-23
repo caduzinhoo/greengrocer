@@ -65,7 +65,9 @@ class _ProfileTabState extends State<ProfileTab> {
                   borderRadius: BorderRadius.circular(20),
                 ),
               ),
-              onPressed: (){},
+              onPressed: (){
+                updatePassword(); 
+              },
              child: Text('Atualizar senha'),
              ),
           ), 
@@ -80,26 +82,81 @@ class _ProfileTabState extends State<ProfileTab> {
       context: context,
       builder:(context){
         return Dialog( 
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20),
+          ),
+          child: Stack(
             children: [
 
-
-              CustomTextFiel(
-                icon: Icons.lock,
-                label: 'Senha atual',  
+              Padding(
+                padding: const EdgeInsets.all(16),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+              
+                    // Titulo
+                    Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 12),
+                      child: Text(
+                        'Atualização de senha',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+              
+                    // Senha atual
+                    CustomTextFiel(
+                      isScret: true,
+                      icon: Icons.lock,
+                      label: 'Senha atual',  
+                      ),
+                      
+                      // Nova senha
+                    CustomTextFiel(
+                      isScret: true,
+                      icon: Icons.lock_outline_rounded,
+                      label: 'Nova senha',  
+                      ),
+              
+                      // Confirmar nova senha
+                    CustomTextFiel(
+                      isScret: true,
+                      icon: Icons.lock_outline_rounded, 
+                      label: 'Confirmar nova senha',  
+                      ),
+                  
+                    // Botão para atualizar a senha
+                    SizedBox(
+                      height: 45,
+                      child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                        ),
+                        onPressed:(){}, 
+                        child: Text('Atualizar'),
+                      ),
+                    ),
+                  ],
                 ),
-              CustomTextFiel(
-                icon: Icons.lock,
-                label: 'Nova senha',  
-                ),
-
-              CustomTextFiel(
-                icon: Icons.lock, 
-                label: 'Confirmar nova senha',  
-                ),
-            
-            
+              ),
+              Positioned(
+                top: 5,
+                right: 5,
+                child: IconButton(
+                  onPressed: (){
+                    Navigator.of(context).pop();
+                  }, 
+                  icon: Icon(
+                    Icons.close
+                    )
+                  ),
+              ),
             ],
           ),
         );
