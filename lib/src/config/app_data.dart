@@ -51,14 +51,7 @@ ItemModel uva = ItemModel(
   description: 'Fresh red uva',
 );
 
-List<ItemModel> items = [
-  apple, 
-  goiaba, 
-  kiwi, 
-  mamao, 
-  manga, 
-  uva,
-];
+List<ItemModel> items = [apple, goiaba, kiwi, mamao, manga, uva];
 
 List<String> categories = [
   'Frutas',
@@ -69,20 +62,9 @@ List<String> categories = [
 ];
 
 List<CartItemModel> cartItems = [
-  CartItemModel(
-    item: apple, 
-    quantity: 1,
-    ),
-  CartItemModel(
-    item: manga, 
-    quantity: 1,
-    ),
-  CartItemModel(
-    item: uva, 
-    quantity: 3,  
-    ),          
-
-
+  CartItemModel(item: apple, quantity: 1),
+  CartItemModel(item: manga, quantity: 1),
+  CartItemModel(item: uva, quantity: 3),
 ];
 
 UserModel user = UserModel(
@@ -90,5 +72,5 @@ UserModel user = UserModel(
   email: 'john.doe@example.com',
   phone: '(11) 99999-9999',
   cpf: '123.456.789-00',
-  senha: '',
+  password: '',
 );

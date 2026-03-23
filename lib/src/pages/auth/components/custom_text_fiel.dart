@@ -6,12 +6,17 @@ class CustomTextFiel extends StatefulWidget {
   final String label;
   final bool isScret;
   final List<TextInputFormatter>? inputFormatters;
+  final String? initialValue;
+  final bool readOnly;
+
 
  const CustomTextFiel({super.key,
   required this.icon,
   required this.label, 
   this.isScret = false,
   this.inputFormatters,
+  this.initialValue,
+  this.readOnly = false,
    });
 
   @override
@@ -27,6 +32,9 @@ bool isObscure = true;
     return Padding(
       padding: const EdgeInsets.only(bottom: 15),
       child: TextFormField(
+        readOnly: widget.readOnly,
+        initialValue: widget.initialValue,
+
         inputFormatters:widget.inputFormatters,
         obscureText: isObscure == true && widget.isScret == true,
         decoration: InputDecoration(

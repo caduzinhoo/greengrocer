@@ -22,26 +22,48 @@ import 'package:greengrocer/src/config/app_data.dart' as appData;
         children: [
           // Email
           CustomTextFiel(
+            readOnly: true,
+            initialValue: appData.user.email,
             icon: Icons.email, 
             label: 'Email'),
 
           // Nome
           CustomTextFiel(
+            readOnly: true,
+            initialValue: appData.user.name,
             icon: Icons.person, 
             label: 'Nome'
             ),
           // Celular
           CustomTextFiel(
+            readOnly: true,
+            initialValue: appData.user.phone,
             icon: Icons.phone, 
             label: 'Celular'
             ),
           // CPF
           CustomTextFiel(
+            readOnly: true,
+            initialValue: appData.user.cpf,
             icon: Icons.file_copy, 
             label: 'CPF',
             isScret: true,
             ),
           // Botão para atualizar a senha
+          SizedBox(
+            height: 50,
+            child: OutlinedButton(
+              style: OutlinedButton.styleFrom(
+                side: BorderSide(
+                  color: Colors.green),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20),
+                ),
+              ),
+              onPressed: (){},
+             child: Text('Atualizar senha'),
+             ),
+          ), 
 
         ],
       ),
