@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:greengrocer/src/models/cart_item_model.dart';
 import 'package:greengrocer/src/models/order_model.dart';
+import 'package:greengrocer/src/pages/orders/components/order_status_widget.dart';
 import 'package:greengrocer/src/services/utils_services.dart';
 
 class OrderTile extends StatelessWidget {
@@ -25,7 +27,7 @@ class OrderTile extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text('Pedido: ${order.id}'),
+              Text('Pedido: ${order.id} '),
               Text(
                 utilsServices.formatDateTime(order.createdDateTime), 
                 style: TextStyle(
@@ -35,23 +37,40 @@ class OrderTile extends StatelessWidget {
               )
             ],
           ),
+          childrenPadding: EdgeInsets.fromLTRB(16, 0, 16, 16), 
           children: [
 
             SizedBox(
               height: 150,
               child: Row(
                 children: [
+
+                  // lista de produtos
+                  Expanded(
+                    flex: 3,
+                    child: ListView(
+                      children: order.items.map((orderItem) { 
+                        return _OrderItemWidget(utilsServices: utilsServices, orderItem: orderItem,
+                        );
+                        
+                      }).toList(),
+                    )
+                      ),
               
+
+                  // Divisão 
+                  VerticalDivider(
+                    color: Colors.grey.shade400,
+                    thickness: 2,
+                    width: 10,
+                  ), 
+
+
+                  // status do pedido 
                   Expanded(
                     flex: 2,
-                    child: Container(
-                      color: Colors.red,),
-                      ),
-              
-                  Expanded(
-                    child: Container(
-                      color: Colors.blue,),
-                      ),
+                    child: OrderStatusWidget(),
+                    ),
               
                 ],
               
@@ -59,6 +78,41 @@ class OrderTile extends StatelessWidget {
             )
           ],
         ),
+      ),
+    );
+  }
+}
+
+class _OrderItemWidget extends StatelessWidget {
+  const _OrderItemWidget({
+
+    required this.utilsServices,
+    required this.orderItem,
+  });
+
+  final UtilsServices utilsServices;
+  final CartItemModel orderItem;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 10),
+      child: Row(
+        children: [
+          Text(
+            '${orderItem.quantity} ${orderItem.item.unit} ', 
+            style: TextStyle(
+              fontWeight:FontWeight.bold,
+            ),
+          ),
+      
+          Expanded(child: Text(orderItem.item.itemName)), 
+          Text(
+            utilsServices.priceToCurrency(
+              orderItem.totalPrice(),
+            ),
+          ),
+        ],
       ),
     );
   }
