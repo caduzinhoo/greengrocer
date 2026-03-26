@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:greengrocer/src/config/custom-colors.dart';
+import 'package:greengrocer/src/config/custom_colors.dart';
 import 'package:greengrocer/src/models/item_model.dart';
 import 'package:greengrocer/src/services/utils_services.dart';
 
@@ -7,8 +7,13 @@ import '../../product/product_screen.dart';
 
 class ItemTile extends StatelessWidget {
   final ItemModel item;
+  final void Function(GlobalKey) cartAnimationMethod;
+  final GlobalKey imageGk = GlobalKey();
 
-  ItemTile({super.key, required this.item});
+  ItemTile({super.key, 
+  required this.item,
+  required this.cartAnimationMethod,
+  });
 
   final UtilsServices utilsServices = UtilsServices();
 
@@ -40,7 +45,7 @@ class ItemTile extends StatelessWidget {
                   Expanded(
                     child: Hero(
                       tag: item.imgUrl,
-                    child: Image.asset(item.imgUrl),
+                    child: Image.asset(item.imgUrl, key: imageGk,),
                       ),
                     ),
 
@@ -73,7 +78,10 @@ class ItemTile extends StatelessWidget {
           right: 4,
 
           child: GestureDetector(
-            onTap: () {},
+            onTap: () {
+              cartAnimationMethod(imageGk); 
+
+            },
             child: Container(
               height: 40,
               width: 35,

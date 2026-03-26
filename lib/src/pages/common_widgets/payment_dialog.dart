@@ -21,8 +21,10 @@ class PaymentDialog extends StatelessWidget {
         borderRadius: BorderRadius.circular(20),
       ),
       child: Stack(
-        // Conteúdo
+        alignment: Alignment.center,
         children: [
+
+        // Conteúdo
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Column(
@@ -30,11 +32,14 @@ class PaymentDialog extends StatelessWidget {
               children: [
             
                 // Titulo
-                Text('Pagamento com Pix',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 18,
-                ),
+                Padding(
+                  padding: const EdgeInsets.all(8),
+                  child: Text('Pagamento com Pix',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 18,
+                  ),
+                  ),
                 ),
                  
                 //  Qr code
@@ -80,6 +85,15 @@ class PaymentDialog extends StatelessWidget {
               ],
             ),
           ),
+
+          Positioned(
+            top: 0,
+            right: 0,
+            child: IconButton(
+              onPressed: (){
+                Navigator.of(context).pop();
+              }, 
+              icon: Icon(Icons.close)))
         ],
       )
     );

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:greengrocer/src/pages/common_widgets/custom_text_fiel.dart';
 import 'package:greengrocer/src/pages/auth/sing_up_screen.dart';
 import 'package:greengrocer/src/pages/base/base_screen.dart';
-import 'package:greengrocer/src/config/custom-colors.dart';
+import 'package:greengrocer/src/config/custom_colors.dart';
 
 class SignInScreen extends StatelessWidget {
   const SignInScreen({super.key});
@@ -79,10 +79,14 @@ class SignInScreen extends StatelessWidget {
           
               // Formulário
               Container(
-                padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 40),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 32, 
+                  vertical: 40,
+                  ),
                 decoration: const BoxDecoration(
                   color: Colors.white,
-                  borderRadius: BorderRadius.vertical(top: Radius.circular(45)),
+                  borderRadius: BorderRadius.vertical(
+                    top: Radius.circular(45)),
                 ),
               
                 child: Column(
