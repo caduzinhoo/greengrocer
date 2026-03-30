@@ -22,7 +22,9 @@ class _HomeTabState extends State<HomeTab> {
   late Function(GlobalKey) runAddToCartAnimation;
 
   void itemSelectedCartAnimations(GlobalKey gkImage) {
-    runAddToCartAnimation(gkImage);
+    runAddToCartAnimation(gkImage); 
+
+
   }
 
   @override
@@ -72,9 +74,12 @@ class _HomeTabState extends State<HomeTab> {
                   '2',
                   style: TextStyle(color: Colors.white, fontSize: 10),
                 ),
-                child: Icon(
-                  Icons.shopping_cart,
-                  color: CustomColors.customSwatchColor,
+                child: AddToCartIcon(
+                  key: globalKeyCartItems,
+                  icon: Icon(
+                    Icons.shopping_cart,
+                    color: CustomColors.customSwatchColor,
+                  ),
                 ),
               ),
             ),
