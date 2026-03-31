@@ -6,6 +6,7 @@ import 'package:greengrocer/src/pages/home/components/category_tile.dart';
 // ignore: library_prefixes
 import 'package:greengrocer/src/config/app_data.dart' as appData;
 import 'package:greengrocer/src/pages/home/components/item_tile.dart';
+import 'package:greengrocer/src/services/utils_services.dart';
 
 class HomeTab extends StatefulWidget {
   const HomeTab({super.key});
@@ -21,11 +22,13 @@ class _HomeTabState extends State<HomeTab> {
 
   late Function(GlobalKey) runAddToCartAnimation;
 
-  void itemSelectedCartAnimations(GlobalKey gkImage) {
-    runAddToCartAnimation(gkImage); 
+ Future<void> itemSelectedCartAnimations(GlobalKey gkImage) async {
+    await runAddToCartAnimation(gkImage);
 
-
+    await globalKeyCartItems.currentState!.runCartAnimation('1');
   }
+
+   final UtilsServices utilsServices = UtilsServices();
 
   @override
   Widget build(BuildContext context) {
@@ -65,10 +68,12 @@ class _HomeTabState extends State<HomeTab> {
         ),
         actions: [
           Padding(
-            padding: const EdgeInsets.only(top: 15, right: 15),
+            padding: const EdgeInsets.only(top: 10, right: 15),
             child: GestureDetector(
               onTap: () {},
               child: Badge(
+                alignment: Alignment.topRight,
+                offset: Offset(-5,-5),// ajusta o posicionamento do circulo, sem este comando o circulo fica afastado do carrinho 
                 backgroundColor: CustomColors.customContrastColor,
                 label: const Text(
                   '2',
@@ -80,6 +85,9 @@ class _HomeTabState extends State<HomeTab> {
                     Icons.shopping_cart,
                     color: CustomColors.customSwatchColor,
                   ),
+                 badgeOptions: const BadgeOptions(
+                  active: false, //para remover o badge do carrinho, pois ja vem com o circulo.
+                 ),
                 ),
               ),
             ),
@@ -137,7 +145,10 @@ class _HomeTabState extends State<HomeTab> {
                     isSelected: appData.categories[index] == selectedCategory,
                   );
                 },
-                separatorBuilder: (context, index) => SizedBox(width: 10),
+                separatorBuilder:(
+                  context, index) => SizedBox(
+                    width: 10,
+                    ),
                 itemCount: appData.categories.length,
               ),
             ),

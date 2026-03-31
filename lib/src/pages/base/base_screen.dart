@@ -34,6 +34,10 @@ class _BaseScreenState extends State<BaseScreen> {
           setState(() {
             currentIndex = index;  
             pageController.jumpToPage(index);
+            pageController.animateToPage(
+              index, 
+              duration: Duration(milliseconds: 900), 
+              curve: Curves.easeInOutQuart,);
           });
           
         },

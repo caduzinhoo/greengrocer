@@ -19,6 +19,10 @@ class _CartTabState extends State<CartTab> {
   void removeItemFromCart(CartItemModel cartIItem) {
     setState(() {
       appData.cartItems.remove(cartIItem);  
+
+      utilsServices.showToast(
+        message: '${cartIItem.item.itemName} removida do carrinho');
+                
     });
   } 
 
@@ -86,12 +90,16 @@ class _CartTabState extends State<CartTab> {
                          showDialog(
                           context: context,
                           builder: (_) {
-                            return PaymentDialog(order: appData.orders.first);
+                            return PaymentDialog(
+                              order: appData.orders.first
+                              );
                           },
                         );
                       }
-
-                    }, 
+                   else{
+                    utilsServices.showToast(message: 'Pedido não confirmado', isError: true);
+                   }
+                  }, 
                   child: Text('Concluir pedido',
                   style: TextStyle(
                     fontSize: 18,
