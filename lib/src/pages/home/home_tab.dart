@@ -1,7 +1,7 @@
 import 'package:add_to_cart_animation/add_to_cart_animation.dart';
 import 'package:flutter/material.dart';
 import 'package:greengrocer/src/config/custom_colors.dart';
-import 'package:greengrocer/src/pages/auth/sign_in_screen.dart';
+// import 'package:greengrocer/src/pages/auth/sign_in_screen.dart';
 import 'package:greengrocer/src/pages/home/components/category_tile.dart';
 // ignore: library_prefixes
 import 'package:greengrocer/src/config/app_data.dart' as appData;
@@ -35,19 +35,19 @@ class _HomeTabState extends State<HomeTab> {
     return Scaffold(
       // app Bar
       appBar: AppBar(
-        leading: IconButton(
-          color: Colors.black,
-          onPressed: () {
-            Navigator.of(context).pushReplacement(
-              MaterialPageRoute(
-                builder: (c) {
-                  return const SignInScreen();
-                },
-              ),
-            );
-          },
-          icon: Icon(Icons.arrow_back),
-        ),
+        // leading: IconButton(
+        //   color: Colors.black,
+        //   onPressed: () {
+        //     Navigator.of(context).pushReplacement(
+        //       MaterialPageRoute(
+        //         builder: (c) {
+        //           return const SignInScreen();
+        //         },
+        //       ),
+        //     );
+        //   },
+        //   icon: Icon(Icons.arrow_back),
+        // ),
         backgroundColor: Colors.transparent,
         elevation: 0,
         centerTitle: true,
@@ -68,7 +68,7 @@ class _HomeTabState extends State<HomeTab> {
         ),
         actions: [
           Padding(
-            padding: const EdgeInsets.only(top: 10, right: 15),
+            padding: const EdgeInsets.only(top: 26, right: 16),
             child: GestureDetector(
               onTap: () {},
               child: Badge(
@@ -95,7 +95,8 @@ class _HomeTabState extends State<HomeTab> {
         ],
       ),
 
-      body: AddToCartAnimation( //animação
+      body: AddToCartAnimation(
+         //animação
         cartKey: globalKeyCartItems,
         createAddToCartAnimation: (addToCartAnimationMethod) {
           runAddToCartAnimation = addToCartAnimationMethod;

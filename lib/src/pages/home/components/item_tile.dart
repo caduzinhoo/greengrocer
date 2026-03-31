@@ -84,7 +84,11 @@ class ItemTile extends StatelessWidget {
           top: 4,
           right: 4,
 
-          child: widget(
+          child: ClipRRect(
+            borderRadius: const BorderRadius.only(
+              bottomLeft: Radius.circular(15),
+              topRight: Radius.circular(20),
+            ),
             child: Material(
               child: InkWell(
                 
