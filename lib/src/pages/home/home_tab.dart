@@ -1,6 +1,7 @@
 import 'package:add_to_cart_animation/add_to_cart_animation.dart';
 import 'package:flutter/material.dart';
 import 'package:greengrocer/src/config/custom_colors.dart';
+import 'package:greengrocer/src/pages/common_widgets/app_name_widget.dart';
 // import 'package:greengrocer/src/pages/auth/sign_in_screen.dart';
 import 'package:greengrocer/src/pages/home/components/category_tile.dart';
 // ignore: library_prefixes
@@ -51,21 +52,7 @@ class _HomeTabState extends State<HomeTab> {
         backgroundColor: Colors.transparent,
         elevation: 0,
         centerTitle: true,
-        title: Text.rich(
-          TextSpan(
-            style: TextStyle(fontSize: 30),
-            children: [
-              TextSpan(
-                text: "Green",
-                style: TextStyle(color: CustomColors.customSwatchColor),
-              ),
-              TextSpan(
-                text: "Grocer",
-                style: TextStyle(color: CustomColors.customContrastColor),
-              ),
-            ],
-          ),
-        ),
+        title: AppNameWidget(),
         actions: [
           Padding(
             padding: const EdgeInsets.only(top: 26, right: 16),
@@ -180,3 +167,4 @@ class _HomeTabState extends State<HomeTab> {
     );
   }
 }
+
